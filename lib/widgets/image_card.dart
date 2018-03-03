@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
-  Function onTapCallback;
   String name;
+  Image image;
+  Function onTapCallback;
 
-  ImageCard(String this.name, {Function this.onTapCallback});
+  ImageCard(String this.name, {Image this.image, Function this.onTapCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class ImageCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                this.image,
                 new Text(
                   this.name,
                   style: new TextStyle(
@@ -35,6 +37,8 @@ class ImageCard extends StatelessWidget {
   }
 
   void _onTap() {
-    onTapCallback(this);
+    if (onTapCallback != null) {
+      onTapCallback(this);
+    }
   }
 }
