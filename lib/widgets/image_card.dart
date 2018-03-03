@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 
-class ImageCard extends StatelessWidget {
+class PlanetCard extends StatelessWidget {
   String name;
   Image image;
   Function onTapCallback;
 
-  ImageCard(String this.name, {Image this.image, Function this.onTapCallback});
+  PlanetCard(String this.name, {Image this.image, Function this.onTapCallback});
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> rowChildren = <Widget>[];
+
+    if (image != null) {
+      rowChildren.add(image);
+    }
+
+    rowChildren.add(new Text(
+      this.name,
+      style: new TextStyle(
+          color: Colors.white,
+          fontSize: 50.0,
+          fontFamily: 'Comic Neue',
+          fontStyle: FontStyle.normal),
+    ));
+
     return new Container(
         color: Colors.blueGrey,
         height: 100.0,
@@ -20,17 +35,7 @@ class ImageCard extends StatelessWidget {
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                this.image,
-                new Text(
-                  this.name,
-                  style: new TextStyle(
-                      color: Colors.white,
-                      fontSize: 50.0,
-                      fontFamily: 'Comic Neue',
-                      fontStyle: FontStyle.normal),
-                ),
-              ],
+              children: rowChildren,
             ),
           ),
         ));
