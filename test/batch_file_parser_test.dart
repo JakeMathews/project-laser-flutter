@@ -1,7 +1,7 @@
-import 'package:project_lazer/data_capture/batch_file.dart';
-import 'package:project_lazer/data_capture/batch_file_model/coordinates.dart';
+import 'package:project_lazer/data_capture/horizons_model/batch_file.dart';
 import 'package:project_lazer/data_capture/batch_file_parser.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:project_lazer/data_capture/horizons_model/coordinates.dart';
 
 final String BATCH_FILE = """
 !\$\$SOF
@@ -47,9 +47,7 @@ void main() {
 
     batchFile.setSiteCoordinates(new Coordinates(-50.0123, 40.123, elevation: 1.0));
     batchFile.setStartTime(new DateTime(2018, 3, 4));
-    batchFile.setEndTime(new DateTime(2018, 3, 5));
-    batchFile.setQuantities(10);
-    batchFile.setStepSize(5);
+    batchFile.setStopTime(new DateTime(2018, 3, 5));
 
     expect(batchFile.toString(), FINAL_MAP);
   });

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PlanetCard extends StatelessWidget {
-  String name;
-  Image image;
-  Function onTapCallback;
+  final String name;
+  final int targetCode;
+  final Image image;
+  final Function onTapCallback;
 
-  PlanetCard(String this.name, {Image this.image, Function this.onTapCallback});
+  PlanetCard(this.name, this.targetCode, {this.image, this.onTapCallback});
 
   @override
   Widget build(BuildContext context) {

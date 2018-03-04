@@ -1,11 +1,14 @@
-Map<String, String> targetBodies = {
-  "Mercury": null,
-  "Venus": null,
-  "Moon": null,
-  "Mars": null,
-  "Jupiter": null,
-  "Saturn": null,
-  "Uranus": null,
-  "Neptune": null,
-//  "Neptune": "assets/object_images/neptune.jpg",
+final Map<String, int> targetBodies = {
+  "Sun": 10,
+  "Mercury": 199,
+  "Venus": 299,
+  "Moon": 301,
+  "Mars": 499,
+  "Jupiter": 599,
+  "Saturn": 699,
+  "Uranus": 799,
+  "Neptune": 899,
+  "Pluto": 899,
 };
+
+final Duration forecast = new Duration(hours: 3);
