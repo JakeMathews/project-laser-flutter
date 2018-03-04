@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_lazer/widgets/image_card.dart';
+import 'package:project_lazer/widgets/planet_card.dart';
 import 'package:project_lazer/config.dart' as Config;
 
 class TargetPage extends StatelessWidget {
