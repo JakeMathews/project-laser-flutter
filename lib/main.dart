@@ -12,9 +12,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     rootBundle.loadString('assets/batch_files/target_batch_1.txt').then((String batchFileText) {
       final BatchFileParser batchFileParser = new BatchFileParser();
-      print(batchFileParser.parseFromString(batchFileText));
+      final BatchFile batchFile = batchFileParser.parseFromString(batchFileText);
     });
-
 
     return new MaterialApp(
       home: new TargetPage(),

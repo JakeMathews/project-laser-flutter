@@ -1,5 +1,11 @@
+import 'package:project_lazer/data_capture/batch_file.dart';
+
 class BatchFileParser {
-  Map<String, String> parseFromString(final String batchFileText) {
+  BatchFile parseFromString(final String batchFileText) {
+    return new BatchFile(parseFromStringToMap(batchFileText));
+  }
+  
+  Map<String, String> parseFromStringToMap(final String batchFileText) {
     final Map<String, String> parameters = {};
     // Splits on equals and removes inner whitespace
     // Group 1 is the parameter name and group 2 is parameter value without quotes

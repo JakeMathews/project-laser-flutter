@@ -2,6 +2,8 @@ name: project_lazer
 description: An application for controlling the project-lazer tripod
 
 dependencies:
+  intl: "^0.15.2"
+
   flutter:
     sdk: flutter
 
