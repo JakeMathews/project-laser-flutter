@@ -15,7 +15,7 @@ class TargetPage extends StatelessWidget {
     });
 
     return new Material(
-      color: Colors.blue,
+      color: Colors.blueGrey,
       child: new ListView(
         children: targets,
       ),

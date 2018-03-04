@@ -25,7 +25,7 @@ class PlanetCard extends StatelessWidget {
     ));
 
     return new Container(
-        color: Colors.blueGrey,
+        color: Colors.grey,
         height: 100.0,
         margin: new EdgeInsets.only(bottom: 5.0),
         child: new Material(
