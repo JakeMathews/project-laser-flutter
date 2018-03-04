@@ -35,6 +35,8 @@ flutter:
     - assets/object_images/uranus.jpg
     - assets/object_images/neptune.jpg
 
+    - assets/batch_files/target_batch_1.txt
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
