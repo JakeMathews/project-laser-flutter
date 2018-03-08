@@ -1,4 +1,4 @@
-package io.gradydragon.projectlazer;
+package io.graydragon.projectlazer;
 
 import android.os.Bundle;
 
