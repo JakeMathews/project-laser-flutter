@@ -1,17 +1,22 @@
 import 'package:project_lazer/horizons/horizons_block_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_parser.dart';
+import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
 import 'package:project_lazer/horizons/model/horizons_block.dart';
 
 // TODO: Replace print statements with logs
 class HorizonsDataParser {
-  static const blockStartIdentifier = '*******************************************************************************';
+  static const blockStartIdentifier =
+      '*******************************************************************************';
 
   final List<HorizonsBlockParser> _blockParsers;
 
   HorizonsDataParser(this._blockParsers);
 
   HorizonsDataParser.withDefaultParsers()
-      : this._blockParsers = [new RequesterInfoParser()];
+      : this._blockParsers = [
+          new RequesterInfoParser(),
+          new TargetSelectionParser(),
+        ];
 
   void registerBlockParser(HorizonsBlockParser horizonsBlockParser) {
     if (horizonsBlockParser != null) {
