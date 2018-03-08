@@ -3,6 +3,8 @@ import 'package:project_lazer/horizons/horizons_data_parser.dart';
 import 'package:project_lazer/horizons/model/horizons_block.dart';
 
 import 'block_parsers/requester_info_parser_test.dart';
+import 'block_parsers/target_selection_parser_test.dart';
+import 'block_parsers/time_span_parser_test.dart';
 
 final String HORIZONS_DATA = '''
 *******************************************************************************
@@ -176,5 +178,7 @@ void main() {
 List<HorizonsBlock> createFakeHorizonsData() {
   return [
     RequesterInfoParserTest.createRequesterInfoBlock(),
+    TargetSelectionParserTest.createTargetInfoBlock(),
+    TimeSpanParserTest.createTimeSpanBlock(),
   ];
 }

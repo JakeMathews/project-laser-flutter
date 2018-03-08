@@ -1,6 +1,6 @@
 import 'package:project_lazer/horizons/horizons_block_parser.dart';
-import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_block.dart';
 import 'package:project_lazer/horizons/model/horizons_site.dart';
+import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_block.dart';
 
 class TargetSelectionParser extends HorizonsBlockParser {
   final RegExp targetBodyNameRegex = new RegExp(r'Target body name:\s*(.*)\s*\((.*)\)');
@@ -8,7 +8,7 @@ class TargetSelectionParser extends HorizonsBlockParser {
 
   @override
   bool parserApplies(String firstLine) {
-    return targetBodyNameRegex.hasMatch(firstLine) && centerBodyNameRegex.hasMatch(firstLine);
+    return targetBodyNameRegex.hasMatch(firstLine);
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:project_lazer/horizons/horizons_block_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
+import 'package:project_lazer/horizons/model/blocks/time_span/time_span_parser.dart';
 import 'package:project_lazer/horizons/model/horizons_block.dart';
 
 // TODO: Replace print statements with logs
@@ -16,6 +17,7 @@ class HorizonsDataParser {
       : this._blockParsers = [
           new RequesterInfoParser(),
           new TargetSelectionParser(),
+          new TimeSpanParser(),
         ];
 
   void registerBlockParser(HorizonsBlockParser horizonsBlockParser) {
@@ -32,8 +34,8 @@ class HorizonsDataParser {
 
     bool startingNewBlock = false;
     bool skipCurrentBlock = false;
-    HorizonsBlockParser currentBlockParser = null;
-    StringBuffer stringBuffer = null;
+    HorizonsBlockParser currentBlockParser;
+    StringBuffer stringBuffer;
     for (final String rawLine in horizonsDataString.split('\n')) {
       final String line = rawLine.trim();
 
@@ -79,7 +81,7 @@ class HorizonsDataParser {
 
       if (stringBuffer == null) stringBuffer = new StringBuffer();
 
-      stringBuffer.write(rawLine);
+      stringBuffer.writeln(rawLine);
     }
 
     return horizonsBlocks;
