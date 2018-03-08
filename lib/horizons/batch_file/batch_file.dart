@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:project_lazer/data_capture/batch_file_parser.dart';
-import 'package:project_lazer/data_capture/horizons_model/coordinates.dart';
+import 'package:project_lazer/horizons/batch_file/batch_file_parser.dart';
+import 'package:project_lazer/horizons/batch_file/coordinates.dart';
 
 class BatchFile {
   final Map<String, String> parameters;
@@ -14,7 +14,8 @@ class BatchFile {
   }
 
   static Future<BatchFile> fromDefault() async {
-    final String batchFileText = await rootBundle.loadString('assets/batch_files/target_batch_1.txt');
+    final String batchFileText = await rootBundle.loadString(
+        'assets/batch_files/target_batch_1.txt');
 
     return new Future<BatchFile>(() {
       final BatchFileParser batchFileParser = new BatchFileParser();

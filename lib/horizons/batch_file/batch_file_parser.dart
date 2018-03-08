@@ -1,10 +1,10 @@
-import 'package:project_lazer/data_capture/horizons_model/batch_file.dart';
+import 'package:project_lazer/horizons/batch_file/batch_file.dart';
 
 class BatchFileParser {
   BatchFile parseFromString(final String batchFileText) {
     return new BatchFile(parseFromStringToMap(batchFileText));
   }
-  
+
   Map<String, String> parseFromStringToMap(final String batchFileText) {
     final Map<String, String> parameters = {};
     // Splits on equals and removes inner whitespace
