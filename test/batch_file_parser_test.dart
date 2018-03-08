@@ -3,8 +3,8 @@ import 'package:project_lazer/horizons/batch_file/batch_file_parser.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_lazer/horizons/batch_file/coordinates.dart';
 
-final String BATCH_FILE = '''
-!\$\$SOF
+final String BATCH_FILE = r'''
+!$$SOF
 COMMAND= '301'
 CENTER= 'coord'
 COORD_TYPE= 'GEODETIC'
@@ -28,7 +28,7 @@ REF_SYSTEM= 'J2000'
 CSV_FORMAT= 'YES'
 OBJ_DATA= 'YES'
 QUANTITIES= '4'
-!\$\$EOF
+!$$EOF
 ''';
 
 void main() {

@@ -11,8 +11,8 @@ void main() {
 
 class RequesterInfoParserTest {
   static const String BLOCK_TEXT = '''
-    Ephemeris / WWW_USER Wed Mar  7 19:56:26 2018 Pasadena, USA      / Horizons
-    ''';
+Ephemeris / WWW_USER Wed Mar  7 19:56:26 2018 Pasadena, USA      / Horizons
+''';
 
   static const String FIRST_LINE = BLOCK_TEXT;
 

@@ -12,10 +12,10 @@ void main() {
 
 class TargetSelectionParserTest {
   static const String BLOCK_TEXT = '''
-    Target body name: Moon (301)                      {source: DE431mx}
-    Center body name: Earth (399)                     {source: DE431mx}
-    Center-site name: (user defined site below)
-    ''';
+Target body name: Moon (301)                      {source: DE431mx}
+Center body name: Earth (399)                     {source: DE431mx}
+Center-site name: (user defined site below)
+''';
 
   static const String FIRST_LINE = BLOCK_TEXT;
 

@@ -6,7 +6,7 @@ import 'block_parsers/requester_info_parser_test.dart';
 import 'block_parsers/target_selection_parser_test.dart';
 import 'block_parsers/time_span_parser_test.dart';
 
-final String HORIZONS_DATA = '''
+final String HORIZONS_DATA = r'''
 *******************************************************************************
 Revised: Jul 26, 2016             Moon / (Earth)                            301
  
@@ -66,10 +66,10 @@ Table format    : Comma Separated Values (spreadsheet)
 *******************************************************************************
  Date__(UT)__HR:MN, , ,Azi_(r-appr), Elev_(r-appr),
 ***************************************************
-\$\$SOE
+$$SOE
  2018-Mar-07 14:56,*, ,254.6904, -4.8278,
  2018-Mar-07 15:01, ,m,255.4781, -5.6978,
-\$\$EOE
+$$EOE
 *******************************************************************************
 Column meaning:
  
@@ -138,7 +138,7 @@ ONLY.  Units: DEGREES
 
 *******************************************************************************
 
-!\$\$SOF
+!$$SOF
 COMMAND = '301'
 CENTER = 'coord'
 COORD_TYPE = 'GEODETIC'
@@ -162,7 +162,7 @@ REF_SYSTEM = 'J2000'
 CSV_FORMAT = 'YES'
 OBJ_DATA = 'YES'
 QUANTITIES = '4'
-\$\$EOE
+$$EOE
 ''';
 
 void main() {
