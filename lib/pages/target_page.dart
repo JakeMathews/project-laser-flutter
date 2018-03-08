@@ -7,6 +7,7 @@ import 'package:project_lazer/config.dart' as Config;
 import 'package:project_lazer/horizons//horizons_data_parser.dart';
 import 'package:project_lazer/horizons/batch_file/batch_file.dart';
 import 'package:project_lazer/horizons/model/horizons_data.dart';
+import 'package:project_lazer/horizons/model/horizons_site.dart';
 import 'package:project_lazer/widgets/planet_card.dart';
 
 // TODO: A lot of horizons functionality is in this widget. Should probably be abstracted to its own package
@@ -18,9 +19,9 @@ class TargetPage extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final List<Widget> targets = <Widget>[];
-    Config.targetBodies.forEach((name, targetCode) {
-      PlanetCard planetCard = new PlanetCard(
-          name, targetCode, onTapCallback: _onTargetSelected);
+    Config.targetSites.forEach((HorizonsSite targetSite) {
+      PlanetCard planetCard =
+          new PlanetCard(targetSite.targetName, targetSite.targetCode, onTapCallback: _onTargetSelected);
       targets.add(planetCard);
     });
 
@@ -33,20 +34,17 @@ class TargetPage extends StatelessWidget {
   }
 
   void _onTargetSelected(final PlanetCard planetCard) {
-    getHorizonsData(planetCard.name, planetCard.targetCode).then((
-        HorizonsData horizonsResponse) {
+    getHorizonsData(planetCard.name, planetCard.targetCode).then((HorizonsData horizonsResponse) {
       // TODO: send data over bluetooth
     });
   }
 
-  Future<HorizonsData> getHorizonsData(final String targetName,
-      final int targetCode) async {
+  Future<HorizonsData> getHorizonsData(final String targetName, final int targetCode) async {
     // TODO: Invalidate on location change as well
     // Do not make a request if cache is valid
     if (horizonsDataCache.containsKey(targetName)) {
       final HorizonsData horizonsData = horizonsDataCache[targetName];
-      final DateTime expirationDateTime = horizonsData.requestedTime.add(
-          Config.forecast);
+      final DateTime expirationDateTime = horizonsData.requestedTime.add(Config.forecast);
       if (expirationDateTime.isAfter(new DateTime.now())) {
         return horizonsData;
       }
@@ -58,8 +56,7 @@ class TargetPage extends StatelessWidget {
     batchFile.setStopTime(new DateTime.now().add(Config.forecast));
 
     //final String horizonsDataString = await makeRequestToHorizons(batchFile);
-    final HorizonsDataParser horizonsDataParser = new HorizonsDataParser
-        .withDefaultParsers();
+    final HorizonsDataParser horizonsDataParser = new HorizonsDataParser.withDefaultParsers();
     final HorizonsData horizonsData = null;
 
     return horizonsData;
@@ -67,8 +64,7 @@ class TargetPage extends StatelessWidget {
 
   Future<String> makeRequestToHorizons(final BatchFile batchFile) async {
     final HttpClient httpClient = new HttpClient();
-    final HttpClientRequest request = await httpClient.getUrl(
-        batchFile.toHorizonsUri());
+    final HttpClientRequest request = await httpClient.getUrl(batchFile.toHorizonsUri());
     print('Horizons URL: ${request.uri}');
     final HttpClientResponse response = await request.close();
     final String responseBody = await response.transform(UTF8.decoder).join();
