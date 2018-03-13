@@ -1,5 +1,5 @@
-abstract class HorizonsBlockParser<T extends Object> {
+abstract class HorizonsBlockParser {
   bool parserApplies(String firstLine);
 
-  T parse(String blockText);
+  Object parse(String blockText);
 }
