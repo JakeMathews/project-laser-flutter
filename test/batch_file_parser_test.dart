@@ -3,7 +3,7 @@ import 'package:project_lazer/horizons/batch_file/batch_file_parser.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_lazer/horizons/batch_file/coordinates.dart';
 
-final String BATCH_FILE = r'''
+const String BATCH_FILE = r'''
 !$$SOF
 COMMAND= '301'
 CENTER= 'coord'

@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:project_lazer/config.dart' as Config;
-import 'package:project_lazer/horizons//horizons_data_parser.dart';
 import 'package:project_lazer/horizons/batch_file/batch_file.dart';
 import 'package:project_lazer/horizons/model/horizons_data.dart';
 import 'package:project_lazer/horizons/model/horizons_site.dart';
@@ -34,7 +33,7 @@ class TargetPage extends StatelessWidget {
   }
 
   void _onTargetSelected(final PlanetCard planetCard) {
-    getHorizonsData(planetCard.name, planetCard.targetCode).then((HorizonsData horizonsResponse) {
+    getHorizonsData(planetCard.name, planetCard.targetCode).then((HorizonsData horizonsData) {
       // TODO: send data over bluetooth
     });
   }
@@ -55,11 +54,12 @@ class TargetPage extends StatelessWidget {
     batchFile.setStartTime(new DateTime.now());
     batchFile.setStopTime(new DateTime.now().add(Config.forecast));
 
-    //final String horizonsDataString = await makeRequestToHorizons(batchFile);
-    final HorizonsDataParser horizonsDataParser = new HorizonsDataParser.withDefaultParsers();
-    final HorizonsData horizonsData = null;
+    // TODO: There should be some way to toggle making requests
+    // final String horizonsDataString = await makeRequestToHorizons(batchFile);
+    // final HorizonsDataParser horizonsDataParser = new HorizonsDataParser.withDefaultParsers();
+    // final List<Object> horizonsDataObjects = horizonsDataParser.parse(horizonsDataString);
 
-    return horizonsData;
+    return null; // TODO: Convert horizonsDataObjects to a HorizonsData object
   }
 
   Future<String> makeRequestToHorizons(final BatchFile batchFile) async {
