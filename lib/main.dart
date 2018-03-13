@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'pages/target_page.dart';
 
 void main() => runApp(new App());

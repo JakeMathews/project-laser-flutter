@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:project_lazer/config.dart' as Config;
 import 'package:project_lazer/horizons//horizons_data_parser.dart';
 import 'package:project_lazer/horizons/batch_file/batch_file.dart';
@@ -37,6 +38,19 @@ class TargetPage extends StatelessWidget {
     getHorizonsData(planetCard.name, planetCard.targetCode).then((HorizonsData horizonsResponse) {
       // TODO: send data over bluetooth
     });
+  }
+
+  // Never finishes
+  Future<List<ScanResult>> scanForBluetooth(final FlutterBlue flutterBlue) async {
+    Set<String> devicesFound = new Set<String>();
+    if (await flutterBlue.isOn && await flutterBlue.isAvailable) {
+      return flutterBlue.scan().toList();
+    } else {
+      print("Bluetooth is not on or available");
+      return new Future(() {
+        return new List<ScanResult>();
+      });
+    }
   }
 
   Future<HorizonsData> getHorizonsData(final String targetName, final int targetCode) async {
