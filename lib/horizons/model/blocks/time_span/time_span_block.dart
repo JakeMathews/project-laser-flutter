@@ -1,14 +1,7 @@
-import 'package:project_lazer/horizons/model/horizons_block.dart';
-
-class TimeSpanBlock extends HorizonsBlock {
+class TimeSpanBlock {
   DateTime startTime;
   DateTime stopTime;
   Duration stepSize;
-
-  @override
-  String getName() {
-    return 'Time Span Block';
-  }
 
   @override
   bool operator ==(Object other) =>

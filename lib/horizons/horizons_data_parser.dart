@@ -2,7 +2,6 @@ import 'package:project_lazer/horizons/horizons_block_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/time_span/time_span_parser.dart';
-import 'package:project_lazer/horizons/model/horizons_block.dart';
 
 // TODO: Replace print statements with logs
 class HorizonsDataParser {
@@ -29,8 +28,8 @@ class HorizonsDataParser {
     }
   }
 
-  List<HorizonsBlock> parse(String horizonsDataString) {
-    final List<HorizonsBlock> horizonsBlocks = [];
+  List<Object> parse(String horizonsDataString) {
+    final List<Object> horizonsBlocks = [];
 
     bool startingNewBlock = false;
     bool skipCurrentBlock = false;

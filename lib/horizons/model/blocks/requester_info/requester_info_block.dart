@@ -1,16 +1,9 @@
-import 'package:project_lazer/horizons/model/horizons_block.dart';
-
-class RequesterInfoBlock implements HorizonsBlock {
+class RequesterInfoBlock {
   String dataType;
   String requesterType;
   DateTime requestedTime;
   String serverLocation;
   String systemName;
-
-  @override
-  String getName() {
-    return 'Requester Info Block';
-  }
 
   @override
   bool operator ==(Object other) =>

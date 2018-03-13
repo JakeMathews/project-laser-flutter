@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_lazer/horizons/horizons_data_parser.dart';
-import 'package:project_lazer/horizons/model/horizons_block.dart';
 
 import 'block_parsers/requester_info_parser_test.dart';
 import 'block_parsers/target_selection_parser_test.dart';
@@ -168,14 +167,14 @@ $$EOE
 void main() {
   test('Test parsing HORIZONS data', () {
     final HorizonsDataParser horizonsDataParser = new HorizonsDataParser.withDefaultParsers();
-    final List<HorizonsBlock> expectedHorizonsData = createFakeHorizonsData();
-    final List<HorizonsBlock> actualHorizonsData = horizonsDataParser.parse(HORIZONS_DATA);
+    final List<Object> expectedHorizonsData = createFakeHorizonsData();
+    final List<Object> actualHorizonsData = horizonsDataParser.parse(HORIZONS_DATA);
 
     expect(actualHorizonsData, expectedHorizonsData);
   });
 }
 
-List<HorizonsBlock> createFakeHorizonsData() {
+List<Object> createFakeHorizonsData() {
   return [
     RequesterInfoParserTest.createRequesterInfoBlock(),
     TargetSelectionParserTest.createTargetInfoBlock(),

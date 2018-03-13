@@ -1,14 +1,8 @@
-import 'package:project_lazer/horizons/model/horizons_block.dart';
 import 'package:project_lazer/horizons/model/horizons_site.dart';
 
-class TargetSelectionBlock extends HorizonsBlock {
+class TargetSelectionBlock {
   HorizonsSite targetBody;
   HorizonsSite centerBody;
-
-  @override
-  String getName() {
-    return 'Target Selection Block';
-  }
 
   @override
   bool operator ==(Object other) =>
