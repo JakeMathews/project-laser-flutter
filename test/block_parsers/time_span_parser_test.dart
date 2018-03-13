@@ -12,7 +12,7 @@ void main() {
 class TimeSpanParserTest {
   static const String BLOCK_TEXT = '''
 Start time      : A.D. 2018-Mar-07 14:56:00.0000 UT      
-Stop  time      : A.D. 2018-Mar-07 17:56:00.0000 UT      
+Stop  time      : A.D. 2018-Mar-07 17:56 UT      
 Step-size       : 5 minutes
 ''';
 
