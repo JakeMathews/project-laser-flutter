@@ -14,8 +14,7 @@ class BatchFile {
   }
 
   static Future<BatchFile> fromDefault() async {
-    final String batchFileText = await rootBundle.loadString(
-        'assets/batch_files/target_batch_1.txt');
+    final String batchFileText = await rootBundle.loadString('assets/batch_files/target_batch_1.txt');
 
     return new Future<BatchFile>(() {
       final BatchFileParser batchFileParser = new BatchFileParser();

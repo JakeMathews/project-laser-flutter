@@ -35,5 +35,4 @@ abstract class BlockParserTest {
 
     return firstLine;
   }
-
 }

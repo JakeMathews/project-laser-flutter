@@ -18,11 +18,7 @@ class PlanetCard extends StatelessWidget {
 
     rowChildren.add(new Text(
       this.name,
-      style: new TextStyle(
-          color: Colors.white,
-          fontSize: 50.0,
-          fontFamily: 'Comic Neue',
-          fontStyle: FontStyle.normal),
+      style: new TextStyle(color: Colors.white, fontSize: 50.0, fontFamily: 'Comic Neue', fontStyle: FontStyle.normal),
     ));
 
     return new Container(

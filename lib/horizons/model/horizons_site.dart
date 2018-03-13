@@ -7,14 +7,11 @@ class HorizonsSite {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is HorizonsSite &&
-              runtimeType == other.runtimeType &&
-              targetName == other.targetName &&
-              targetCode == other.targetCode;
+      other is HorizonsSite &&
+          runtimeType == other.runtimeType &&
+          targetName == other.targetName &&
+          targetCode == other.targetCode;
 
   @override
-  int get hashCode =>
-      targetName.hashCode ^
-      targetCode.hashCode;
-
+  int get hashCode => targetName.hashCode ^ targetCode.hashCode;
 }

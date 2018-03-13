@@ -8,13 +8,13 @@ class RequesterInfoBlock {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is RequesterInfoBlock &&
-              runtimeType == other.runtimeType &&
-              dataType == other.dataType &&
-              requesterType == other.requesterType &&
-              requestedTime == other.requestedTime &&
-              serverLocation == other.serverLocation &&
-              systemName == other.systemName;
+      other is RequesterInfoBlock &&
+          runtimeType == other.runtimeType &&
+          dataType == other.dataType &&
+          requesterType == other.requesterType &&
+          requestedTime == other.requestedTime &&
+          serverLocation == other.serverLocation &&
+          systemName == other.systemName;
 
   @override
   int get hashCode =>

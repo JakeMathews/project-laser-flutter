@@ -1,19 +1,7 @@
 import 'package:project_lazer/horizons/model/horizons_data_entry.dart';
 
-enum SolarPresence {
-  daylight,
-  civilTwilight,
-  nauticalTwilight,
-  astronomicalTwilight,
-  night
-}
-enum LunarPresence {
-  aboveApparentHorizon,
-  belowApparentHorizon,
-  rise,
-  transit,
-  set
-}
+enum SolarPresence { daylight, civilTwilight, nauticalTwilight, astronomicalTwilight, night }
+enum LunarPresence { aboveApparentHorizon, belowApparentHorizon, rise, transit, set }
 
 class ObserverAngleDataEntry extends HorizonsDataEntry {
   /*

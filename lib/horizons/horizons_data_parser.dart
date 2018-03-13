@@ -3,10 +3,8 @@ import 'package:project_lazer/horizons/model/blocks/requester_info/requester_inf
 import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/time_span/time_span_parser.dart';
 
-// TODO: Replace print statements with logs
 class HorizonsDataParser {
-  static const blockStartIdentifier =
-      '*******************************************************************************';
+  static const blockStartIdentifier = '*******************************************************************************';
 
   final List<HorizonsBlockParser> _blockParsers;
 
@@ -63,8 +61,7 @@ class HorizonsDataParser {
         }
 
         if (currentBlockParser == null) {
-          print(
-              'Block could not be parsed! No registered block parser applied. Skipping!');
+          print('Block could not be parsed! No registered block parser applied. Skipping!');
           skipCurrentBlock = true;
         }
 

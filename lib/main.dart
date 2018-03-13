@@ -4,6 +4,7 @@ import 'pages/target_page.dart';
 
 void main() => runApp(new App());
 
+// TODO: Replace print in application with logs
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,4 +13,3 @@ class App extends StatelessWidget {
     );
   }
 }
-

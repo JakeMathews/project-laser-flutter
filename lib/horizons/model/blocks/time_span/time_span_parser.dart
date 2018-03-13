@@ -12,7 +12,7 @@ class TimeSpanParser extends HorizonsBlockParser {
     'hours': 0,
     'minutes': 0,
   };
-  
+
   @override
   bool parserApplies(String firstLine) {
     return startStopRegex.hasMatch(firstLine);
@@ -23,7 +23,8 @@ class TimeSpanParser extends HorizonsBlockParser {
     final TimeSpanBlock timeRangeBlock = new TimeSpanBlock();
 
     startStopRegex.allMatches(blockText).forEach((Match match) {
-      final String cleanDate = match.group(2).replaceAll('UT', '').replaceAll('A.D.', 'AD').replaceAll('B.C.', 'BC').trim();
+      final String cleanDate =
+          match.group(2).replaceAll('UT', '').replaceAll('A.D.', 'AD').replaceAll('B.C.', 'BC').trim();
       final DateTime time = dateFormat.parseLoose(cleanDate);
       if (match.group(1).trim() == 'Start') {
         timeRangeBlock.startTime = time;

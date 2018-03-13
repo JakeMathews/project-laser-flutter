@@ -11,14 +11,13 @@ class Coordinates {
 
   @override
   String toString() {
-    List<String> coordinatesAsString = new List.from(
-        getAsList().map((coordinate) {
-          if (coordinate > 0) {
-            return '+${coordinate.toString()}';
-          } else {
-            return coordinate.toString();
-          }
-        }));
+    List<String> coordinatesAsString = new List.from(getAsList().map((coordinate) {
+      if (coordinate > 0) {
+        return '+${coordinate.toString()}';
+      } else {
+        return coordinate.toString();
+      }
+    }));
 
     return coordinatesAsString.join(',');
   }
