@@ -11,7 +11,11 @@ void main() {
   final String systemName = 'Horizons';
   final RequesterInfoBlock requesterInfoBlock =
       new RequesterInfoBlock(dataType, requesterType, requestedTime, serverLocation, systemName);
-  final EqualsHashTest equalsHashTest =
-      new EqualsHashTest('${requesterInfoBlock.runtimeType} hash() and equals() test', requesterInfoBlock);
-  equalsHashTest.runTest();
+  new RequesterInfoTestBlock('${requesterInfoBlock.runtimeType} hash() and equals() test', requesterInfoBlock);
+}
+
+class RequesterInfoTestBlock extends EqualsHashTest {
+  RequesterInfoTestBlock(String description, Object object) : super(description, object) {
+    runTest();
+  }
 }
