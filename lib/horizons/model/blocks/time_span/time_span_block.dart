@@ -1,7 +1,9 @@
 class TimeSpanBlock {
-  DateTime startTime;
-  DateTime stopTime;
-  Duration stepSize;
+  final DateTime startTime;
+  final DateTime stopTime;
+  final Duration stepSize;
+
+  TimeSpanBlock(this.startTime, this.stopTime, this.stepSize);
 
   @override
   bool operator ==(Object other) =>

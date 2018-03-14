@@ -1,9 +1,11 @@
 class RequesterInfoBlock {
-  String dataType;
-  String requesterType;
-  DateTime requestedTime;
-  String serverLocation;
-  String systemName;
+  final String dataType;
+  final String requesterType;
+  final DateTime requestedTime;
+  final String serverLocation;
+  final String systemName;
+
+  RequesterInfoBlock(this.dataType, this.requesterType, this.requestedTime, this.serverLocation, this.systemName);
 
   @override
   bool operator ==(Object other) =>

@@ -2,7 +2,7 @@ import 'package:project_lazer/horizons/horizons_block_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/time_span/time_span_block.dart';
 import 'package:project_lazer/horizons/model/blocks/time_span/time_span_parser.dart';
 
-import 'block_parser_test_helper.dart';
+import '../block_parser_test_helper.dart';
 
 void main() {
   new TimeSpanParserTest(new TimeSpanParser());
@@ -13,11 +13,10 @@ class TimeSpanParserTest extends BlockParserTest {
 
   @override
   Object createExpectedBlock() {
-    final TimeSpanBlock targetSelectionBlock = new TimeSpanBlock();
-    targetSelectionBlock.startTime = new DateTime(2018, 03, 07, 14, 56, 0);
-    targetSelectionBlock.stopTime = new DateTime(2018, 03, 07, 17, 56, 0);
-    targetSelectionBlock.stepSize = new Duration(minutes: 5);
-    return targetSelectionBlock;
+    final DateTime startTime = new DateTime(2018, 03, 07, 14, 56, 0);
+    final DateTime stopTime = new DateTime(2018, 03, 07, 17, 56, 0);
+    final Duration stepSize = new Duration(minutes: 5);
+    return new TimeSpanBlock(startTime, stopTime, stepSize);
   }
 
   @override

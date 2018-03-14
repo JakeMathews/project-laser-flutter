@@ -14,15 +14,14 @@ class RequesterInfoParser extends HorizonsBlockParser {
 
   @override
   RequesterInfoBlock parse(String blockText) {
-    final RequesterInfoBlock requesterInfoBlock = new RequesterInfoBlock();
     final Match match = regExp.firstMatch(blockText);
 
-    requesterInfoBlock.dataType = match.group(1);
-    requesterInfoBlock.requesterType = match.group(2);
-    requesterInfoBlock.requestedTime = dateFormat.parse(match.group(3));
-    requesterInfoBlock.serverLocation = match.group(4);
-    requesterInfoBlock.systemName = match.group(5);
+    final String dataType = match.group(1);
+    final String requesterType = match.group(2);
+    final DateTime requestedTime = dateFormat.parse(match.group(3));
+    final String serverLocation = match.group(4);
+    final String systemName = match.group(5);
 
-    return requesterInfoBlock;
+    return new RequesterInfoBlock(dataType, requesterType, requestedTime, serverLocation, systemName);
   }
 }

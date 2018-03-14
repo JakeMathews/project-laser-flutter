@@ -2,7 +2,7 @@ import 'package:project_lazer/horizons/horizons_block_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_block.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_parser.dart';
 
-import 'block_parser_test_helper.dart';
+import '../block_parser_test_helper.dart';
 
 void main() {
   new RequesterInfoParserTest(new RequesterInfoParser());
@@ -13,13 +13,12 @@ class RequesterInfoParserTest extends BlockParserTest {
 
   @override
   Object createExpectedBlock() {
-    final RequesterInfoBlock requesterInfoBlock = new RequesterInfoBlock();
-    requesterInfoBlock.dataType = 'Ephemeris';
-    requesterInfoBlock.requesterType = 'WWW_USER';
-    requesterInfoBlock.requestedTime = new DateTime(2018, 03, 07, 19, 56, 26);
-    requesterInfoBlock.serverLocation = 'Pasadena, USA';
-    requesterInfoBlock.systemName = 'Horizons';
-    return requesterInfoBlock;
+    final String dataType = 'Ephemeris';
+    final String requesterType = 'WWW_USER';
+    final DateTime requestedTime = new DateTime(2018, 03, 07, 19, 56, 26);
+    final String serverLocation = 'Pasadena, USA';
+    final String systemName = 'Horizons';
+    return new RequesterInfoBlock(dataType, requesterType, requestedTime, serverLocation, systemName);
   }
 
   @override

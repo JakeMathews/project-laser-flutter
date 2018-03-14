@@ -20,16 +20,17 @@ class TimeSpanParser extends HorizonsBlockParser {
 
   @override
   TimeSpanBlock parse(String blockText) {
-    final TimeSpanBlock timeRangeBlock = new TimeSpanBlock();
-
+    DateTime startTime;
+    DateTime stopTime;
+    Duration stepSize;
     startStopRegex.allMatches(blockText).forEach((Match match) {
       final String cleanDate =
           match.group(2).replaceAll('UT', '').replaceAll('A.D.', 'AD').replaceAll('B.C.', 'BC').trim();
       final DateTime time = dateFormat.parseLoose(cleanDate);
       if (match.group(1).trim() == 'Start') {
-        timeRangeBlock.startTime = time;
+        startTime = time;
       } else if (match.group(1).trim() == 'Stop') {
-        timeRangeBlock.stopTime = time;
+        stopTime = time;
       }
     });
 
@@ -37,9 +38,8 @@ class TimeSpanParser extends HorizonsBlockParser {
     final int stepValue = int.parse(stepSizeMatch.group(1));
     final String stepSizeName = stepSizeMatch.group(2).trim().toLowerCase();
     steps[stepSizeName] = stepValue;
-    final Duration stepSize = new Duration(days: steps['days'], hours: steps['hours'], minutes: steps['minutes']);
-    timeRangeBlock.stepSize = stepSize;
+    stepSize = new Duration(days: steps['days'], hours: steps['hours'], minutes: steps['minutes']);
 
-    return timeRangeBlock;
+    return new TimeSpanBlock(startTime, stopTime, stepSize);
   }
 }

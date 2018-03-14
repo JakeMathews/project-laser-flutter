@@ -1,5 +1,5 @@
 import 'package:project_lazer/horizons/horizons_block_parser.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 abstract class BlockParserTest {
   final HorizonsBlockParser blockParser;

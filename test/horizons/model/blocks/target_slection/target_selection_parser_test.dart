@@ -3,7 +3,7 @@ import 'package:project_lazer/horizons/model/blocks/target_selection/target_sele
 import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
 import 'package:project_lazer/horizons/model/horizons_site.dart';
 
-import 'block_parser_test_helper.dart';
+import '../block_parser_test_helper.dart';
 
 void main() {
   new TargetSelectionParserTest(new TargetSelectionParser());
