@@ -9,7 +9,12 @@
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/test/block_parsers/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/requester_info/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/target_slection/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/time_span/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

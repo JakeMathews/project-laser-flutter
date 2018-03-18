@@ -5,7 +5,9 @@ class EqualsHashTest {
   final String description;
   final Object object;
 
-  EqualsHashTest(this.description, this.object);
+  EqualsHashTest(this.description, this.object) {
+    runTest();
+  }
 
   void runTest() {
     test(this.description, () {
