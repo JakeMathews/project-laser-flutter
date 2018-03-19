@@ -15,7 +15,7 @@ class TargetPage extends StatelessWidget {
 
   List<Widget> createTargetCards() {
     final List<Widget> targetCards = [];
-    Config.targetSites.forEach((final HorizonsSite targetSite) {
+    Config.completeTargetMap.sites.forEach((final int targetCode, final HorizonsSite targetSite) {
       targetCards.add(new TargetCard(targetSite));
     });
 
