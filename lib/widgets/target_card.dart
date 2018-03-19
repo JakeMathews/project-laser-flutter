@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:location/location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_lazer/config.dart' as Config;
 import 'package:project_lazer/horizons/batch_file/batch_file.dart';
+import 'package:project_lazer/horizons/batch_file/coordinates.dart';
 import 'package:project_lazer/horizons/horizons_data_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/table/table_entry.dart';
 import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
@@ -57,14 +59,24 @@ class TargetCard extends StatelessWidget {
     // Do not make a request if cache is valid
     if (horizonsDataCache.containsKey(targetSite.targetCode)) {
       final HorizonsData horizonsData = horizonsDataCache[targetSite.targetCode];
-      final DateTime currentTime = new DateTime.now().toUtc();
-      final DateTime expirationTime = horizonsData.requesterInfoBlock.requestedTime.add(Config.forecast);
-      if (currentTime.isBefore(expirationTime)) {
-        return horizonsData;
+      if (horizonsData != null) { // TODO: Determine why this is sometimes null
+        final DateTime currentTime = new DateTime.now().toUtc();
+        final DateTime expirationTime = horizonsData.requesterInfoBlock.requestedTime.add(Config.forecast);
+        if (currentTime.isBefore(expirationTime)) {
+          return horizonsData;
+        }
       }
     }
 
     final BatchFile batchFile = await BatchFile.fromDefault();
+    try {
+      final Location location = new Location();
+      final Map<String, double> currentLocation = await location.getLocation;
+      final Coordinates coordinates = new Coordinates.fromMap(currentLocation);
+      batchFile.setLocalSiteCoordinates(coordinates);
+    } on Exception {
+      print('User location could not be determined. Using default location ${batchFile.getLocalSiteCoordinates()}');
+    }
     batchFile.setTarget(targetSite.targetCode);
     final DateTime currentTime = TimeUtil.roundTime(new DateTime.now().toUtc(), Config.stepSize);
     batchFile.setStepSize(Config.stepSize);

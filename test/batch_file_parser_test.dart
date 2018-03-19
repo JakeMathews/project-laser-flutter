@@ -42,7 +42,7 @@ void main() {
     BatchFileParser batchFileParser = new BatchFileParser();
     BatchFile batchFile = batchFileParser.parseFromString(BATCH_FILE);
 
-    batchFile.setSiteCoordinates(new Coordinates(-50.0123, 40.123, elevation: 1.0));
+    batchFile.setLocalSiteCoordinates(new Coordinates(-50.0123, 40.123, elevation: 1.0));
     batchFile.setStartTime(new DateTime(2018, 3, 4));
     batchFile.setStopTime(new DateTime(2018, 3, 5));
 

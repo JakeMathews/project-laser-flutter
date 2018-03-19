@@ -26,8 +26,12 @@ class BatchFile {
     setParameter('COMMAND', targetCode.toString());
   }
 
-  void setSiteCoordinates(final Coordinates coordinates) {
+  void setLocalSiteCoordinates(final Coordinates coordinates) {
     setParameter('SITE_COORD', coordinates.toString());
+  }
+
+  Coordinates getLocalSiteCoordinates() {
+    return new Coordinates.fromString(parameters['SITE_COORD']);
   }
 
   void setStartTime(final DateTime dateTime) {
