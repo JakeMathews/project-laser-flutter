@@ -1,10 +1,12 @@
 import 'package:project_lazer/horizons/horizons_block_parser.dart';
+import 'package:project_lazer/horizons/model/blocks/table/table_parser.dart';
+import 'package:project_lazer/horizons/model/horizons_data.dart';
 import 'package:project_lazer/horizons/model/blocks/requester_info/requester_info_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/target_selection/target_selection_parser.dart';
 import 'package:project_lazer/horizons/model/blocks/time_span/time_span_parser.dart';
 
 class HorizonsDataParser {
-  static const blockStartIdentifier = '*******************************************************************************';
+  static const blockStartIdentifier = '********************';
 
   final List<HorizonsBlockParser> _blockParsers;
 
@@ -15,6 +17,7 @@ class HorizonsDataParser {
           new RequesterInfoParser(),
           new TargetSelectionParser(),
           new TimeSpanParser(),
+          new TableParser(),
         ];
 
   void registerBlockParser(HorizonsBlockParser horizonsBlockParser) {
@@ -26,8 +29,8 @@ class HorizonsDataParser {
     }
   }
 
-  List<Object> parse(String horizonsDataString) {
-    final List<Object> horizonsBlocks = [];
+  HorizonsData parse(String horizonsDataString) {
+    final HorizonsData horizonsData = new HorizonsData();
 
     bool startingNewBlock = false;
     bool skipCurrentBlock = false;
@@ -37,9 +40,9 @@ class HorizonsDataParser {
       final String line = rawLine.trim();
 
       // Check for new block
-      if (line == blockStartIdentifier) {
+      if (line.startsWith(blockStartIdentifier)) {
         if (currentBlockParser != null && stringBuffer != null) {
-          horizonsBlocks.add(currentBlockParser.parse(stringBuffer.toString()));
+          horizonsData.addDataBlock(currentBlockParser.parse(stringBuffer.toString()));
         }
 
         currentBlockParser = null;
@@ -80,6 +83,6 @@ class HorizonsDataParser {
       stringBuffer.writeln(rawLine);
     }
 
-    return horizonsBlocks;
+    return horizonsData;
   }
 }

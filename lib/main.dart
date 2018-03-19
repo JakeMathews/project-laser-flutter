@@ -10,6 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new TargetPage(),
+      theme: new ThemeData.dark(),
     );
   }
 }

@@ -1,5 +1,5 @@
 abstract class HorizonsBlockParser {
-  bool parserApplies(String firstLine);
+  bool parserApplies(final String firstLine);
 
-  Object parse(String blockText);
+  Object parse(final String blockText);
 }

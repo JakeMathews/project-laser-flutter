@@ -22,7 +22,8 @@ abstract class BlockParserTest {
   void _parseTest() {
     test('${blockParser.runtimeType} parse(String blockText) Test', () {
       final Object actualHorizonsBlock = blockParser.parse(getBlockText());
-      expect(actualHorizonsBlock, createExpectedBlock());
+      final Object expectedHorizonsBlock = createExpectedBlock();
+      expect(actualHorizonsBlock, expectedHorizonsBlock);
     });
   }
 

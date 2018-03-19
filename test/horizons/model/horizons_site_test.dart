@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:project_lazer/horizons/model/horizons_site.dart';
+import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
 
 // Needed to improve coverage
 void main() {

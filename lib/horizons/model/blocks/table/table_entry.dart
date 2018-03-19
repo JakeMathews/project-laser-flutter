@@ -1,9 +1,25 @@
-import 'package:project_lazer/horizons/model/horizons_data_entry.dart';
-
 enum SolarPresence { daylight, civilTwilight, nauticalTwilight, astronomicalTwilight, night }
 enum LunarPresence { aboveApparentHorizon, belowApparentHorizon, rise, transit, set }
 
-class ObserverAngleDataEntry extends HorizonsDataEntry {
+final Map<String, SolarPresence> solarPresenceSymbolMap = {
+  '*': SolarPresence.daylight,
+  'C': SolarPresence.civilTwilight,
+  'N': SolarPresence.nauticalTwilight,
+  'A': SolarPresence.astronomicalTwilight,
+  ' ': SolarPresence.night,
+};
+
+final Map<String, LunarPresence> lunarPresenceSymbolMap = {
+  'm': LunarPresence.aboveApparentHorizon,
+  ' ': LunarPresence.belowApparentHorizon,
+  'r': LunarPresence.rise,
+  't': LunarPresence.transit,
+  's': LunarPresence.set,
+};
+
+class TableEntry {
+  final DateTime dateTime;
+
   /*
   SOLAR PRESENCE (OBSERVING SITE)
   Time tag is followed by a blank, then a solar-presence symbol:
@@ -13,7 +29,7 @@ class ObserverAngleDataEntry extends HorizonsDataEntry {
         'A'  Astronomical twilight/dawn
         ' '  Night OR geocentric ephemeris
    */
-  SolarPresence solarPresence;
+  final SolarPresence solarPresence;
 
   /*
   LUNAR PRESENCE WITH TARGET RISE/TRANSIT/SET MARKER (OBSERVING SITE)
@@ -24,7 +40,7 @@ class ObserverAngleDataEntry extends HorizonsDataEntry {
         't'  Transit (target body at or past local maximum RTS elevation)
         's'  Set     (target body on or below cut-off RTS elevation)
    */
-  LunarPresence lunarPresence;
+  final LunarPresence lunarPresence;
 
   /*
   Refracted apparent azimuth and elevation of target center. Adjusted for
@@ -34,6 +50,30 @@ class ObserverAngleDataEntry extends HorizonsDataEntry {
   with respect to plane perpendicular to local zenith direction. TOPOCENTRIC
   ONLY.  Units: DEGREES
    */
-  double azimuth;
-  double elevation;
+  final double azimuth;
+  final double elevation;
+
+  TableEntry(this.dateTime, this.solarPresence, this.lunarPresence, this.azimuth, this.elevation);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is TableEntry &&
+              runtimeType == other.runtimeType &&
+              dateTime == other.dateTime &&
+              solarPresence == other.solarPresence &&
+              lunarPresence == other.lunarPresence &&
+              azimuth == other.azimuth &&
+              elevation == other.elevation;
+
+  @override
+  int get hashCode =>
+      dateTime.hashCode ^
+      solarPresence.hashCode ^
+      lunarPresence.hashCode ^
+      azimuth.hashCode ^
+      elevation.hashCode;
+
+
+
 }

@@ -3,6 +3,7 @@ description: An application for controlling the project-lazer tripod
 
 dependencies:
   intl: "^0.15.2"
+  collection: "^1.14.5"
 
   flutter:
     sdk: flutter

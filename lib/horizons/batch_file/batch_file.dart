@@ -42,6 +42,15 @@ class BatchFile {
     setParameter(parameterKey, dateFormat.format(dateTime));
   }
 
+  void setStepSize(final Duration stepSize) {
+    //STEP_SIZE= '5 m'
+    setParameter('STEP_SIZE', '${stepSize.inMinutes.toString()} m');
+  }
+
+  String getStepSize() {
+    return parameters['STEP_SIZE'];
+  }
+
   void setParameter(String parameterName, String value) {
     print('key: $parameterName | value: $value');
     parameters[parameterName] = '\'${value.replaceAll('\'', '')}\'';

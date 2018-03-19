@@ -11,6 +11,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/requester_info/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/table/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/target_slection/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/blocks/time_span/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/horizons/model/packages" />
