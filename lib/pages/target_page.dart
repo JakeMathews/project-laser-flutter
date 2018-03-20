@@ -7,10 +7,11 @@ class TargetPage extends StatelessWidget {
   @override
   Widget build(final BuildContext rootContext) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Project Lazer"),
-        ),
-        body: new ListView(children: createTargetCards()));
+      appBar: new AppBar(
+        title: new Text("Project Lazer"),
+      ),
+      body: new ListView(children: createTargetCards()),
+    );
   }
 
   List<Widget> createTargetCards() {

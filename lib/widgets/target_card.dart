@@ -1,22 +1,12 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:location/location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_lazer/config.dart' as Config;
-import 'package:project_lazer/horizons/batch_file/batch_file.dart';
-import 'package:project_lazer/horizons/batch_file/coordinates.dart';
-import 'package:project_lazer/horizons/horizons_data_parser.dart';
+
 import 'package:project_lazer/horizons/model/blocks/table/table_entry.dart';
 import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
-import 'package:project_lazer/horizons/model/horizons_data.dart';
-
-import 'package:project_lazer/util/time_util.dart' as TimeUtil;
+import 'package:project_lazer/horizons/horizons_request.dart';
 
 class TargetCard extends StatelessWidget {
-  static final Map<int, HorizonsData> horizonsDataCache = {};
+  final HorizonsRequest horizonsRequest = new HorizonsRequest();
   final HorizonsSite targetSite;
 
   TargetCard(this.targetSite);
@@ -38,9 +28,8 @@ class TargetCard extends StatelessWidget {
   }
 
   void _onTargetSelected(final BuildContext context) {
-    getHorizonsData(targetSite).then((final HorizonsData horizonsData) {
-      final TableEntry tableEntry = horizonsData.tableBlock.getRoundedEntry(new DateTime.now().toUtc());
-
+    horizonsRequest.getCurrentHorizonsData(targetSite).then((final TableEntry tableEntry) {
+      Scaffold.of(context).hideCurrentSnackBar();
       Scaffold.of(context).showSnackBar(new SnackBar(
             content: new Text('Azimuth: ${tableEntry.azimuth} | Elevation: ${tableEntry.elevation}'),
             duration: new Duration(seconds: 30),
@@ -52,52 +41,5 @@ class TargetCard extends StatelessWidget {
 
       // TODO: Send data over bluetooth
     });
-  }
-
-  Future<HorizonsData> getHorizonsData(final HorizonsSite targetSite) async {
-    // TODO: (Long term) Invalidate on location change as well
-    // Do not make a request if cache is valid
-    if (horizonsDataCache.containsKey(targetSite.targetCode)) {
-      final HorizonsData horizonsData = horizonsDataCache[targetSite.targetCode];
-      if (horizonsData != null) { // TODO: Determine why this is sometimes null
-        final DateTime currentTime = new DateTime.now().toUtc();
-        final DateTime expirationTime = horizonsData.requesterInfoBlock.requestedTime.add(Config.forecast);
-        if (currentTime.isBefore(expirationTime)) {
-          return horizonsData;
-        }
-      }
-    }
-
-    final BatchFile batchFile = await BatchFile.fromDefault();
-    try {
-      final Location location = new Location();
-      final Map<String, double> currentLocation = await location.getLocation;
-      final Coordinates coordinates = new Coordinates.fromMap(currentLocation);
-      batchFile.setLocalSiteCoordinates(coordinates);
-    } on Exception {
-      print('User location could not be determined. Using default location ${batchFile.getLocalSiteCoordinates()}');
-    }
-    batchFile.setTarget(targetSite.targetCode);
-    final DateTime currentTime = TimeUtil.roundTime(new DateTime.now().toUtc(), Config.stepSize);
-    batchFile.setStepSize(Config.stepSize);
-    batchFile.setStartTime(currentTime);
-    batchFile.setStopTime(currentTime.add(Config.forecast));
-
-    final String horizonsDataString = await makeRequestToHorizons(batchFile);
-    final HorizonsDataParser horizonsDataParser = new HorizonsDataParser.withDefaultParsers();
-    final HorizonsData horizonsData = horizonsDataParser.parse(horizonsDataString);
-    horizonsDataCache[targetSite.targetCode] = horizonsData;
-
-    return horizonsData;
-  }
-
-  Future<String> makeRequestToHorizons(final BatchFile batchFile) async {
-    final HttpClient httpClient = new HttpClient();
-    final HttpClientRequest request = await httpClient.getUrl(batchFile.toHorizonsUri());
-    print('Horizons URL: ${request.uri}');
-    final HttpClientResponse response = await request.close();
-    final String responseBody = await response.transform(UTF8.decoder).join();
-
-    return responseBody;
   }
 }
