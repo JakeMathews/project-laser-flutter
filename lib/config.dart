@@ -1,6 +1,7 @@
+import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
 import 'package:project_lazer/horizons/target/target_category.dart';
-import 'package:project_lazer/horizons/target/target_map.dart';
-import 'package:project_lazer/horizons/target/target_map_parser.dart';
+import 'package:project_lazer/horizons/target/target_site_map.dart';
+import 'package:project_lazer/horizons/target/target_site_map_parser.dart';
 import 'package:project_lazer/horizons/target/target_selection.dart';
 
 final Duration forecast = new Duration(hours: 3);
@@ -392,8 +393,14 @@ Number of matches = 375. Use ID# to make unique selection.
 *******************************************************************************
 ''';
 
-final TargetMap completeTargetMap = new TargetMapParser().parse(targetBodies);
+final TargetSiteMap completeTargetMap = new TargetSiteMapParser().parse(targetBodies);
+final Map<int, String> targetSiteRename = {
+  10: 'The Sun',
+  301: 'The Moon',
+  999: 'Pluto'
+};
 
+final TargetCategory allTargetsCategory = new TargetCategory('All', completeTargetMap);
 final TargetCategory planetsCategory = new TargetCategory(
     'Planets',
     completeTargetMap.getSubset(new TargetSelection(<int>[
@@ -408,3 +415,16 @@ final TargetCategory planetsCategory = new TargetCategory(
       899, // Neptune
       999 // Pluto
     ], <int>[])));
+
+final List<TargetCategory> targetCategories = [
+  planetsCategory,
+  allTargetsCategory
+];
+
+final TargetCategory defaultTargetCategory = planetsCategory;
+
+void init() {
+  targetSiteRename.forEach((final int targetCode, final String newName) {
+    completeTargetMap.sites[targetCode] = new HorizonsSite(targetCode, newName);
+  });
+}

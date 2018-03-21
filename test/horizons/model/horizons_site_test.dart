@@ -6,7 +6,7 @@ void main() {
   test('Testing HorizonsSite equals and hash', () {
     final String targetName = 'mars';
     final int targetCode = 499;
-    final HorizonsSite horizonsSite = new HorizonsSite(targetName, targetCode);
+    final HorizonsSite horizonsSite = new HorizonsSite(targetCode, targetName);
     expect(horizonsSite == horizonsSite, true);
     expect(horizonsSite.hashCode, targetName.hashCode ^ targetCode.hashCode);
   });

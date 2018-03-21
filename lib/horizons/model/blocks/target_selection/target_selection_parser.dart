@@ -18,12 +18,12 @@ class TargetSelectionParser extends HorizonsBlockParser {
     final Match targetBodyMatch = targetBodyNameRegex.firstMatch(blockText);
     final String targetBodyName = targetBodyMatch.group(1).trim();
     final int targetBodyCode = int.parse(targetBodyMatch.group(2));
-    targetSelectionBlock.targetBody = new HorizonsSite(targetBodyName, targetBodyCode);
+    targetSelectionBlock.targetBody = new HorizonsSite(targetBodyCode, targetBodyName);
 
     final Match centerBodyMatch = centerBodyNameRegex.firstMatch(blockText);
     final String centerBodyName = centerBodyMatch.group(1).trim();
     final int centerBodyCode = int.parse(centerBodyMatch.group(2));
-    targetSelectionBlock.centerBody = new HorizonsSite(centerBodyName, centerBodyCode);
+    targetSelectionBlock.centerBody = new HorizonsSite(centerBodyCode, centerBodyName);
 
     return targetSelectionBlock;
   }

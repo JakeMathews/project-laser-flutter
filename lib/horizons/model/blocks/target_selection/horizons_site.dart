@@ -1,17 +1,18 @@
 class HorizonsSite {
-  final String targetName;
   final int targetCode;
+  final String targetName;
 
-  HorizonsSite(this.targetName, this.targetCode);
+  HorizonsSite(this.targetCode, this.targetName, );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is HorizonsSite &&
           runtimeType == other.runtimeType &&
-          targetName == other.targetName &&
-          targetCode == other.targetCode;
+          targetCode == other.targetCode &&
+          targetName == other.targetName;
+
 
   @override
-  int get hashCode => targetName.hashCode ^ targetCode.hashCode;
+  int get hashCode => targetCode.hashCode ^ targetName.hashCode;
 }

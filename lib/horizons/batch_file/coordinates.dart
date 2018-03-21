@@ -3,7 +3,7 @@ class Coordinates {
   final double longitude;
   final double elevation;
 
-  Coordinates(this.latitude, this.longitude, {this.elevation = 0.0});
+  Coordinates(this.longitude, this.latitude, {this.elevation = 0.0});
 
   Coordinates.fromString(final String coordinates)
       : this.latitude = double.parse(coordinates.split(',')[0]),

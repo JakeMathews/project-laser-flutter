@@ -1,11 +1,11 @@
 import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
-import 'package:project_lazer/horizons/target/target_map.dart';
+import 'package:project_lazer/horizons/target/target_site_map.dart';
 
-class TargetMapParser {
+class TargetSiteMapParser {
   final RegExp genericRegExp = new RegExp(r'(-?\d+)\s*(.*)?');
 
-  TargetMap parse(final String siteList) {
-    final TargetMap targetMap = new TargetMap();
+  TargetSiteMap parse(final String siteList) {
+    final TargetSiteMap targetMap = new TargetSiteMap();
 
     for (final String rawLine in siteList.split('\n')) {
       final String line = rawLine.trim();
@@ -24,7 +24,7 @@ class TargetMapParser {
             targetName = name;
           }
         }
-        final HorizonsSite horizonsSite = new HorizonsSite(targetName, targetCode);
+        final HorizonsSite horizonsSite = new HorizonsSite(targetCode, targetName);
         targetMap.sites[targetCode] = horizonsSite;
       }
     }

@@ -1,19 +1,19 @@
 import 'package:project_lazer/horizons/model/blocks/target_selection/horizons_site.dart';
 import 'package:project_lazer/horizons/target/target_selection.dart';
 
-class TargetMap {
+class TargetSiteMap {
   final Map<int, HorizonsSite> sites = {};
 
-  Map<int, HorizonsSite> getSubset(final TargetSelection targetSelection) {
-    final Map<int, HorizonsSite> siteMap = {};
+  TargetSiteMap getSubset(final TargetSelection targetSelection) {
+    final TargetSiteMap targetSiteMap = new TargetSiteMap();
     targetSelection.targetCodeWhiteList.forEach((final int targetCode) {
-      siteMap[targetCode] = sites[targetCode];
+      targetSiteMap.sites[targetCode] = sites[targetCode];
     });
 
     targetSelection.targetCodeBlackList.forEach((final int targetCode) {
-      siteMap.remove(targetCode);
+      targetSiteMap.sites.remove(targetCode);
     });
 
-    return siteMap;
+    return targetSiteMap;
   }
 }

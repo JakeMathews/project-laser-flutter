@@ -15,8 +15,8 @@ class TargetSelectionParserTest extends BlockParserTest {
   @override
   Object createExpectedBlock() {
     final TargetSelectionBlock targetSelectionBlock = new TargetSelectionBlock();
-    targetSelectionBlock.targetBody = new HorizonsSite('Moon', 301);
-    targetSelectionBlock.centerBody = new HorizonsSite('Earth', 399);
+    targetSelectionBlock.targetBody = new HorizonsSite(301, 'Moon');
+    targetSelectionBlock.centerBody = new HorizonsSite(399, 'Earth');
     return targetSelectionBlock;
   }
 
