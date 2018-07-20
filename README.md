@@ -1,7 +1,7 @@
-# Project Lazer
-[![codecov](https://codecov.io/gh/GrayDragonSoftware/project-lazer-flutter/branch/master/graph/badge.svg)](https://codecov.io/gh/GrayDragonSoftware/project-lazer-flutter)
+# Project Laser
+[![codecov](https://codecov.io/gh/GrayDragonSoftware/project-laser-flutter/branch/master/graph/badge.svg)](https://codecov.io/gh/GrayDragonSoftware/project-laser-flutter)
 
-An android and ios application for controlling the project-lazer tripod.
+An android and ios application for controlling the project-laser tripod.
 
 ## Getting Started
 
@@ -13,7 +13,7 @@ Below are instructions for running tests and creating code coverage.
 ### Android Studio
 TODO: Create documentation
 ### Creating Code Coverage
-Code coverage for Project Lazer is performed through Codecov.
+Code coverage for Project Laser is performed through Codecov.
 
 Until coverage is supported in Android Studio we have to manually create our coverage files and upload them.
 #### Generating Coverage File
